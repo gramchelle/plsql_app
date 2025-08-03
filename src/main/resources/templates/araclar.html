@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Araç Listesi</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Araç Listesi</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Araç Kodu</th>
+                <th>Araç Adı</th>
+                <th>Motor Hacmi</th>
+                <th>Renk Kodu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="arac : ${araclar}">
+                <td th:text="${arac.aracKodu}"></td>
+                <td th:text="${arac.aracAdi}"></td>
+                <td th:text="${arac.motorHacmi}"></td>
+                <td th:text="${arac.renkKodu}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
