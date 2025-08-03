@@ -2,6 +2,7 @@ package com.example.stajokulu.Controller;
 
 import com.example.stajokulu.Model.Dto.Arac.*;
 import com.example.stajokulu.Model.Entity.AracEntity;
+import com.example.stajokulu.Model.Entity.RenklerEntity;
 import com.example.stajokulu.Service.AracService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,12 @@ public class AracController {
         }
         
         return new ResponseEntity<>(updatedArac, HttpStatus.OK);
+    }
+
+    @GetMapping("/getcolors")
+    public ResponseEntity<List<RenklerEntity>> getAllColors() {
+        List<RenklerEntity> colors = aracService.getAllColors();
+        return new ResponseEntity<>(colors, HttpStatus.OK);
     }
 
 }

@@ -2,7 +2,12 @@ package com.example.stajokulu.Service;
 
 import com.example.stajokulu.Model.Dto.Arac.AracUpdateDto;
 import com.example.stajokulu.Model.Entity.AracEntity;
+import com.example.stajokulu.Model.Entity.RenklerEntity;
 import com.example.stajokulu.Repository.AracRepository;
+import com.example.stajokulu.Repository.RenklerRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +15,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AracService {
 
-    @Autowired
-    private AracRepository aracRepository;
+    private final AracRepository aracRepository;
+    private final RenklerRepository renklerRepository;
 
     public List<AracEntity> getAllVehicles() {
         return aracRepository.findAll();
@@ -67,5 +73,12 @@ public class AracService {
         } finally {
             System.out.println("SİLME İŞLEMİ TAMAMLANDI");
         }
+    }
+
+    public List<RenklerEntity> getAllColors() {
+        /* return renklerRepository.findAll().stream()
+                .map(RenklerEntity::getRenkKodu)
+                .toList(); */
+        return renklerRepository.findAll();
     }
 }
